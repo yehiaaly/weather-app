@@ -1,0 +1,26 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "A responsive and interactive web application that provides real-time weather information for cities worldwide. This project was built to practice asynchronous JavaScript, API integration, and modern CSS layout techniques.",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yehiaaly/weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yehiaaly/weather-app/issues"
+  },
+  "homepage": "https://github.com/yehiaaly/weather-app#readme",
+  "devDependencies": {
+    "vite": "^7.3.0"
+  }
+}

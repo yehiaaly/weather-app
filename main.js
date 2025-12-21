@@ -1,0 +1,59 @@
+const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}&units=metric`
+
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+const weatherIcon = document.querySelector(".weather-icon");
+
+const humidity = document.querySelector(".humidity")
+const wind = document.querySelector(".wind")
+const temp = document.querySelector(".temp")
+const cityEl = document.querySelector(".city")
+
+async function checkWeather(city) {
+    try {
+        const response = await fetch(apiUrl + `&q=${city}`);
+        const data = await response.json();
+        console.log(data);
+
+        if (data.cod == "404") {
+            document.querySelector(".error").style.display = "block";
+            document.querySelector(".weather").style.display = "none";
+            return;
+        }
+
+        cityEl.innerHTML = data.name
+        temp.innerHTML = Math.round(data.main.temp) + "°C"
+        humidity.innerHTML = data.main.humidity + "%"
+        wind.innerHTML = data.wind.speed + "km/h"
+
+        if (data.weather[0].main == "Clouds") {
+            weatherIcon.src = "images/clouds.png";
+        } else if (data.weather[0].main == "Clear") {
+            weatherIcon.src = "images/clear.png";
+        } else if (data.weather[0].main == "Rain") {
+            weatherIcon.src = "images/rain.png";
+        } else if (data.weather[0].main == "Drizzle") {
+            weatherIcon.src = "images/drizzle.png";
+        } else if (data.weather[0].main == "Mist") {
+            weatherIcon.src = "images/mist.png";
+        }
+
+        document.querySelector(".weather").style.display = "block";
+        document.querySelector(".error").style.display = "none";
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+searchBtn.addEventListener("click", () => {
+    checkWeather(searchBox.value);
+})
+
+searchBox.addEventListener("keypress", (e) => {
+    if (e.key == "Enter") {
+        checkWeather(searchBox.value);
+    }
+})
+
+checkWeather('Cairo')
