@@ -6,7 +6,7 @@ A responsive and interactive web application that provides real-time weather inf
 
 The application allows users to search for a specific city and instantly retrieves key weather metrics including temperature, humidity, wind speed, and dynamic weather conditions.
 
-### [View Project](https://weather-app-tutorial-01.netlify.app/)
+### [View Project](https://weather-app-36l.pages.dev/)
 
 ## 🚀 Key Features
 
