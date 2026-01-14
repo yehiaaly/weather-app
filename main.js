@@ -1,9 +1,20 @@
+import { createIcons, Search, Droplets, Wind, Cloud, Sun, CloudRain, CloudDrizzle, CloudFog } from 'lucide';
+
+// Initialize static icons
+createIcons({
+  icons: {
+    Search,
+    Droplets,
+    Wind
+  }
+});
+
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}&units=metric`
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
-const weatherIcon = document.querySelector(".weather-icon");
+const weatherIconContainer = document.querySelector(".weather-icon-container");
 
 const humidity = document.querySelector(".humidity")
 const wind = document.querySelector(".wind")
@@ -27,17 +38,28 @@ async function checkWeather(city) {
         humidity.innerHTML = data.main.humidity + "%"
         wind.innerHTML = data.wind.speed + "km/h"
 
+        let iconName = 'cloud-rain'; // default
+
         if (data.weather[0].main == "Clouds") {
-            weatherIcon.src = "images/clouds.png";
+            iconName = "cloud";
         } else if (data.weather[0].main == "Clear") {
-            weatherIcon.src = "images/clear.png";
+            iconName = "sun";
         } else if (data.weather[0].main == "Rain") {
-            weatherIcon.src = "images/rain.png";
+            iconName = "cloud-rain";
         } else if (data.weather[0].main == "Drizzle") {
-            weatherIcon.src = "images/drizzle.png";
+            iconName = "cloud-drizzle";
         } else if (data.weather[0].main == "Mist") {
-            weatherIcon.src = "images/mist.png";
+            iconName = "cloud-fog";
         }
+
+        // Update weather icon
+        weatherIconContainer.innerHTML = `<i data-lucide="${iconName}"></i>`;
+        createIcons({
+            icons: {
+                Cloud, Sun, CloudRain, CloudDrizzle, CloudFog
+            },
+            root: weatherIconContainer
+        });
 
         document.querySelector(".weather").style.display = "block";
         document.querySelector(".error").style.display = "none";
@@ -56,4 +78,5 @@ searchBox.addEventListener("keypress", (e) => {
     }
 })
 
+// Initial load
 checkWeather('Cairo')
