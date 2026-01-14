@@ -22,5 +22,8 @@
   "homepage": "https://github.com/yehiaaly/weather-app#readme",
   "devDependencies": {
     "vite": "^7.3.0"
+  },
+  "dependencies": {
+    "lucide": "^0.562.0"
   }
 }

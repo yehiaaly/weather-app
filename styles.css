@@ -88,9 +88,10 @@ body {
   border-color: var(--accent-color);
 }
 
-.search button img {
+.search button .lucide {
   width: 16px;
-  filter: invert(1);
+  height: 16px;
+  stroke: var(--text-primary);
   opacity: 0.8;
 }
 
@@ -99,9 +100,15 @@ body {
   animation: fadeIn 0.5s ease;
 }
 
-.weather-icon {
-  width: 100px;
+.weather-icon-container {
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
+}
+
+.weather-icon-container .lucide {
+  width: 100px;
+  height: 100px;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
 }
 
@@ -138,9 +145,10 @@ body {
   text-align: left;
 }
 
-.col img {
+.col .lucide {
   width: 24px;
-  filter: brightness(0) invert(1);
+  height: 24px;
+  stroke: var(--text-primary);
   opacity: 0.7;
 }
 

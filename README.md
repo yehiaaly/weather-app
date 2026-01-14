@@ -1,4 +1,6 @@
-# Weather App
+# Weather App — OpenWeather API
+
+![Weather App Preview](preview.png)
 
 ## 📌 Project Overview
 
@@ -11,7 +13,7 @@ The application allows users to search for a specific city and instantly retriev
 ## 🚀 Key Features
 
 - **Real-Time Data**: Integrates with the OpenWeatherMap API to fetch live weather data.
-- **Dynamic UI**: The interface and weather icons update dynamically based on the current weather condition (Clear, Clouds, Rain, Drizzle, Mist).
+- **Dynamic UI**: The interface and weather icons update dynamically based on the current weather condition (Clear, Clouds, Rain, Drizzle, Mist) using Lucide icons.
 - **Error Handling**: Gracefully handles invalid city names or API errors by displaying user-friendly error messages.
 - **Responsive Design**: Built with a mobile-first approach using CSS Flexbox and media queries to ensure compatibility across devices.
 - **Keyboard support**: Users can trigger the search by pressing the `Enter` key.
@@ -27,14 +29,15 @@ The application allows users to search for a specific city and instantly retriev
   - **DOM Manipulation**: efficiently updating the DOM with data from the API.
   - **Async/Await & Fetch API**: Handling asynchronous network requests in a clean, readable manner.
   - **Event Handling**: Managing user interactions (clicks, keypresses).
+  - **Vite**: Build tool for faster development.
+  - **Lucide Icons**: Modern and consistent icon set.
 
 ## 📂 Project Structure
 
 ```
-weather-app-tutorial/
-├── images/          # Weather condition icons (rain, clear, clouds, etc.)
+weather-app/
 ├── index.html       # Main application structure
-├── script.js        # Application logic and API integration
+├── main.js          # Application logic and API integration
 ├── styles.css       # Custom styling and responsive design
 └── README.md        # Project documentation
 ```
@@ -49,12 +52,21 @@ To run this project locally, follow these steps:
     ```
 2.  **Navigate to the project directory**:
     ```bash
-    cd weather-app-tutorial
+    cd weather-app
     ```
-3.  **Open `index.html`**:
-    Simply open the `index.html` file in any modern web browser.
-
-    _Optional: For a better experience, you can use a local development server (e.g., Live Server in VS Code)._
+3.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+4.  **Create a `.env` file**:
+    Create a file named `.env` in the root directory and add your OpenWeather API key:
+    ```
+    VITE_WEATHER_API_KEY=your_api_key_here
+    ```
+5.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
 ## 💡 Code Highlights
 
@@ -85,7 +97,6 @@ async function checkWeather(city) {
 
 While fully functional, this project has room for enhancements that I plan to implement:
 
-- **Security**: Move the API key to a backend proxy or use environment variables to prevent exposure in the client-side code.
 - **Forecast**: Add a 5-day weather forecast.
 - **Geolocation**: Automatically detect the user's location on startup.
 - **Unit Testing**: Add basic tests for utility functions.
